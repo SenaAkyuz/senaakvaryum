@@ -39,7 +39,7 @@ export const viewport: Viewport = {
 };
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const { settings, categories, products, source } = await getSiteData();
+  const { settings, categories, products } = await getSiteData();
 
   return (
     <html lang="tr" className={`${montserrat.variable} ${manrope.variable}`}>
@@ -47,15 +47,6 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         <Header hasNew={products.some((p) => p.isNew)} />
         {children}
         <Footer settings={settings} categories={categories} />
-        {source === "demo" && (
-          <p className="font-display pointer-events-none fixed bottom-4 left-1/2 z-40 -translate-x-1/2 rounded-full border border-white/15 bg-black/75 px-4 py-2 text-center text-[10px] leading-snug font-semibold tracking-wide whitespace-nowrap text-white/70 backdrop-blur">
-            Örnek içerik gösteriliyor
-            <span className="hidden sm:inline">
-              {" "}
-              · Panel bağlanınca kendi ürünleriniz görünür
-            </span>
-          </p>
-        )}
       </body>
     </html>
   );
