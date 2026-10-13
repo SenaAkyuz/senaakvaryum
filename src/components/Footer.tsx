@@ -49,19 +49,35 @@ export default function Footer({
         </div>
       </div>
 
-      {/* Dev, şeffaf yazı: arkasında pastel su ve japon balıkları */}
-      <div className="relative isolate mt-4 grid h-[min(40vw,400px)] min-h-[200px] place-items-center overflow-hidden">
+      {/* Dev, şeffaf yazı: arkasında pastel su ve yüzen iki japon balığı */}
+      <div className="relative isolate mt-4 h-[min(44vw,460px)] min-h-[260px] overflow-hidden">
         <Image
-          src="/photos/bg-altin.webp"
+          src="/photos/bg-su-serit.webp"
           alt=""
           fill
           sizes="100vw"
-          className="-z-10 object-cover [object-position:50%_34%]"
+          className="-z-20 object-cover"
         />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b0f15] via-[#0b0f15]/20 to-[#06080c]/70" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b0f15] via-[#0b0f15]/10 to-transparent" />
+        <Image
+          src="/photos/goldfish-a.webp"
+          alt=""
+          width={630}
+          height={474}
+          sizes="(min-width: 1024px) 38vw, 56vw"
+          className="animate-float-slow pointer-events-none absolute top-1/2 left-[-6%] h-auto w-[56vw] max-w-[560px] -translate-y-[46%] -rotate-3 drop-shadow-[0_24px_30px_rgba(0,60,90,0.35)] sm:left-[3%] sm:w-[38vw]"
+        />
+        <Image
+          src="/photos/goldfish-b.webp"
+          alt=""
+          width={500}
+          height={461}
+          sizes="(min-width: 1024px) 30vw, 46vw"
+          className="animate-float pointer-events-none absolute top-1/2 right-[-4%] h-auto w-[46vw] max-w-[440px] -translate-y-[48%] rotate-3 drop-shadow-[0_24px_30px_rgba(0,60,90,0.35)] sm:right-[4%] sm:w-[30vw]"
+        />
         <p
           aria-hidden
-          className="font-display pointer-events-none px-3 text-center text-[9.4vw] leading-none font-black tracking-[0.005em] whitespace-nowrap text-white/[0.16] uppercase select-none [text-shadow:0_1px_0_rgba(255,255,255,0.55),0_8px_40px_rgba(0,40,70,0.4)] min-[1500px]:text-[8.4rem]"
+          className="font-display pointer-events-none absolute inset-0 z-10 grid place-items-center px-3 text-center text-[9.4vw] leading-none font-black tracking-[0.005em] whitespace-nowrap text-white/[0.2] uppercase select-none [text-shadow:0_1px_0_rgba(255,255,255,0.6),0_10px_44px_rgba(0,50,80,0.45)] min-[1500px]:text-[8.4rem]"
         >
           Sena Akvaryum
         </p>

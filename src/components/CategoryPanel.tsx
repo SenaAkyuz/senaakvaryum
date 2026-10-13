@@ -152,7 +152,7 @@ export default function CategoryPanel({
         <motion.div style={{ x: titleX }} className={`relative z-10 ${titlePlace}`}>
           <motion.div style={{ x: titleShiftX, y: titleShiftY }}>
             <Heading
-              className="cat-title font-display leading-[0.86] font-black tracking-[-0.045em] uppercase"
+              className="cat-title font-display -mt-[0.2em] pt-[0.2em] leading-[0.86] font-black tracking-[-0.045em] uppercase"
               style={{
                 ...sizes,
                 backgroundImage: gradient,
@@ -192,7 +192,7 @@ export default function CategoryPanel({
         >
           <motion.div style={{ x: titleShiftX, y: titleShiftY }}>
             <p
-              className="cat-title font-display leading-[0.86] font-black tracking-[-0.045em] uppercase [filter:drop-shadow(0_12px_24px_rgba(0,0,0,0.45))]"
+              className="cat-title font-display -mt-[0.2em] pt-[0.2em] leading-[0.86] font-black tracking-[-0.045em] uppercase [filter:drop-shadow(0_12px_24px_rgba(0,0,0,0.45))]"
               style={{
                 ...sizes,
                 backgroundImage: gradient,
@@ -203,11 +203,13 @@ export default function CategoryPanel({
             >
               {words.map((w) => {
                 // Hayvanla çakışan uçtaki harf öne alınır (diğerleri yerinde ama görünmez)
-                const front = flip ? 0 : w.length - 1;
+                // Uzun kelimelerde (KAPLUMBAĞA gibi) iki harf birden öne alınır ki hiçbiri gizlenmesin
+                const n = w.length >= 8 ? 2 : 1;
+                const isFront = (i: number) => (flip ? i < n : i >= w.length - n);
                 return (
                   <span key={w} className="block">
                     {[...w].map((ch, i) => (
-                      <span key={i} style={{ visibility: i === front ? "visible" : "hidden" }}>
+                      <span key={i} style={{ visibility: isFront(i) ? "visible" : "hidden" }}>
                         {ch}
                       </span>
                     ))}
