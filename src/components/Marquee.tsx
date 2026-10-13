@@ -17,7 +17,7 @@ export default function Marquee({ words }: { words: string[] }) {
                 >
                   {w}
                 </span>
-                <span className="bubble size-3.5 sm:size-5" />
+                <span className="bubble relative size-3.5 sm:size-5" />
               </span>
             ))}
           </div>

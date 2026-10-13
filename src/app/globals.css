@@ -78,7 +78,6 @@ body {
 
 /* Su baloncuğu: şeffaf, kenarı ışıl ışıl, üstte yansıma */
 .bubble {
-  position: relative;
   border-radius: 9999px;
   background:
     radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.16) 7%, transparent 17%),
