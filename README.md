@@ -56,12 +56,20 @@ Bir *Tür* oluştururken "Canlı" ya da "Malzeme" seçmek yeterli; ürün eklerk
 Ana sayfadaki "Malzemeler" bölümü her kategorinin malzeme türlerini otomatik listeler.
 İçinde ürün olmayan tür/bölüm sitede görünmez.
 
-### Fotoğraf ipuçları
+### Fotoğraflar: otomatik küçültme ve arka plan temizleme
 
-- **Kategori vitrin fotoğrafı:** arka planı kaldırılmış (şeffaf) tek bir hayvan fotoğrafı. Siteyle birlikte 4 kategori için hazır fotoğraf gelir (`public/photos`); panelden yeni fotoğraf yüklenirse o kullanılır.
-  Yazının önüne taşan görünüm şeffaf arka plan sayesinde oluşur.
-- **Ürün fotoğrafı:** dikey (4:5) çekim en iyi görünür. Kart 4:5 kırpıldığı için ürün kenarda kalıyorsa panelde fotoğrafın üzerindeki **Hotspot** ile asıl ürünü işaretleyin; site o noktayı ortalar.
-- **Küçük çizim (maskot):** kategoride "Küçük çizim / logo" alanı vardır; yüklenmezse hazır olan kullanılır. Fotoğrafı olmayan ürünlerde de bu çizim görünür.
+Panelde fotoğraf yüklerken **dosya boyutu önemli değil**; yükleme anında annenin tarayıcısında şunlar otomatik olur:
+
+- **Ürün fotoğrafları:** en uzun kenar 2400 px'e küçültülür, WebP olarak kaydedilir (kalite %90, gözle fark edilmez). 70 MB'lık bir fotoğraf ~0,3 MB olur.
+- **Kategori "Vitrin fotoğrafı" (ana sayfadaki büyük 3D alan):** küçültülür + **yapay zekâ ile arka plan silinir** + kenarlar temizlenir + hayvanın etrafı kırpılır. Sonuç önizlemede görünür; beğenilmezse "Arka planı silmeden kullan" seçilebilir.
+- **Küçük çizim (maskot):** otomatik küçültülür, şeffaflığı korunur.
+- Siteye gelen ziyaretçiye ise Sanity CDN'i her ekran için ayrıca küçültüp WebP/AVIF olarak sunar.
+
+Bilmen gerekenler:
+- Arka plan temizleme ilk kullanımda yaklaşık 40 MB'lık yapay zekâ modelini indirir (1–2 dakika); sonrası daha hızlı. Bilgisayarda yapılması önerilir.
+- Arka plan silinmemiş düz bir fotoğraf yüklenirse (ör. önizlemede "silmeden kullan" seçilirse) ana sayfada kenarları yumuşatılarak sahneye oturtulur.
+- Telefonla çekilmiş normal fotoğraflar sorunsuzdur. Tarayıcının açamayacağı kadar devasa (yüzlerce MB) dosyalar için panel uyarı verir.
+- Ürün fotoğrafı 4:5 kırpıldığı için ürün kenarda kalıyorsa fotoğrafın üzerindeki **Hotspot** ile asıl ürünü işaretleyin.
 
 ## Yayına alma (Vercel)
 

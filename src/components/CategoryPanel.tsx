@@ -49,6 +49,8 @@ function Visual({ category }: { category: Category }) {
   const landscape = w > h * 1.05;
   // Gövdesi alt kenarda kesik, uzun kuş fotoğraflarının altını yumuşat
   const fadeBottom = image.softBottom ?? h > w * 1.25;
+  // Arka planı silinmemiş düz fotoğraf (panel dışından yüklenmişse): kenarları yumuşakça eritip sahneye oturt
+  const framed = image.hasAlpha === false;
   return (
     <div className={category.slug === "balik" ? "animate-float-slow" : ""}>
       {/* Gölge ayrı katmanda: maske ile birlikte kullanılırsa kenarlarda kutu izi kalır */}
@@ -60,7 +62,11 @@ function Visual({ category }: { category: Category }) {
           height={h}
           sizes="(min-width: 1024px) 46vw, 90vw"
           className={`relative z-10 mx-auto object-contain ${
-            fadeBottom ? "[mask-image:linear-gradient(to_bottom,#000_78%,transparent_98%)]" : ""
+            framed
+              ? "[mask-image:radial-gradient(ellipse_at_center,#000_46%,transparent_74%)]"
+              : fadeBottom
+                ? "[mask-image:linear-gradient(to_bottom,#000_78%,transparent_98%)]"
+                : ""
           } ${
             landscape
               ? "h-auto max-h-[56svh] w-[min(92vw,640px)] lg:max-h-[64svh] lg:w-[min(36vw,520px)]"

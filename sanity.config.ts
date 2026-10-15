@@ -13,6 +13,8 @@ export default defineConfig({
   projectId: projectId || "missing-project-id",
   dataset,
   schema: { types: schemaTypes },
+  // Sürükle-bırak doğrudan yüklemeyi kapat: her fotoğraf otomatik küçültme/temizleme hattından geçsin
+  form: { image: { directUploads: false } },
   plugins: [
     structureTool({
       structure: (S) =>

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { optimizeSource } from "../PhotoSource";
 
 export const product = defineType({
   name: "product",
@@ -67,7 +68,7 @@ export const product = defineType({
       name: "image",
       title: "Fotoğraf",
       type: "image",
-      options: { hotspot: true },
+      options: { hotspot: true, sources: [optimizeSource] },
     }),
     defineField({
       name: "description",

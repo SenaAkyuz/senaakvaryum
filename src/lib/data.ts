@@ -20,7 +20,7 @@ const client = createClient({
   useCdn: true,
 });
 
-const img = `{ "url": asset->url, "focal": hotspot{x, y}, "lqip": asset->metadata.lqip, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height }`;
+const img = `{ "url": asset->url, "focal": hotspot{x, y}, "hasAlpha": asset->metadata.hasAlpha, "lqip": asset->metadata.lqip, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height }`;
 
 const QUERY = groq`{
   "settings": *[_type == "siteSettings"][0]{

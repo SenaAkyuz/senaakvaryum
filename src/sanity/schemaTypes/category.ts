@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { THEMES } from "@/lib/themes";
+import { cutoutSource, optimizeSource } from "../PhotoSource";
 
 export const category = defineType({
   name: "category",
@@ -52,14 +53,15 @@ export const category = defineType({
       name: "image",
       title: "Vitrin fotoğrafı (büyük)",
       type: "image",
-      options: { hotspot: true },
+      options: { hotspot: true, sources: [cutoutSource] },
       description:
-        "En güzel sonuç için arka planı kaldırılmış (şeffaf PNG) bir hayvan fotoğrafı yükleyin.",
+        "Herhangi bir hayvan fotoğrafı yükleyin: sistem otomatik küçültür, arka planı siler ve ana sayfadaki büyük vitrine uygun hâle getirir.",
     }),
     defineField({
       name: "mascot",
       title: "Küçük çizim / logo (isteğe bağlı)",
       type: "image",
+      options: { sources: [optimizeSource] },
       description:
         "Kartlarda ve malzeme kutularında görünen küçük çizgi-film hayvan görseli (şeffaf PNG). Yüklemezseniz hazır olan kullanılır.",
     }),

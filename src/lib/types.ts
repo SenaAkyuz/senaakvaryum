@@ -7,6 +7,8 @@ export type ImageRef = {
   focal?: { x: number; y: number };
   /** false: altı doğal bitiyor (ör. dalda duran kuş), alt kenarı yumuşatma */
   softBottom?: boolean;
+  /** false: arka planı silinmemiş düz fotoğraf (Sanity metadata) */
+  hasAlpha?: boolean;
   lqip?: string;
   width?: number;
   height?: number;

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { optimizeSource } from "../PhotoSource";
 
 export const subCategory = defineType({
   name: "subCategory",
@@ -52,7 +53,7 @@ export const subCategory = defineType({
       name: "image",
       title: "Fotoğraf (isteğe bağlı)",
       type: "image",
-      options: { hotspot: true },
+      options: { hotspot: true, sources: [optimizeSource] },
     }),
   ],
   preview: {
